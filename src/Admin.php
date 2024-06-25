@@ -31,14 +31,14 @@ class WfBLAdmin
     public function options_page()
     {
         $pages = [
-            WfBLPlugin::PLUGIN_PREFIX => [
-                'page_title' => __('Wordfence to Crowdsec', WF2CSPlugin::TEXTDOMAIN),
+            Plugin::PLUGIN_PREFIX => [
+                'page_title' => __('Wordfence to Crowdsec', Plugin::TEXTDOMAIN),
                 'sections' => [
                     'section-one' => [
-                        'title' => __('Section One', WF2CSPlugin::TEXTDOMAIN),
+                        'title' => __('Section One', Plugin::TEXTDOMAIN),
                         'fields' => [
                             'datapipe_file' => [
-                                'title' => __('Exchange file', WF2CSPlugin::TEXTDOMAIN),
+                                'title' => __('Exchange file', Plugin::TEXTDOMAIN),
                                 'type' => 'text',
                                 'value' => DataPipe::DEFAULT_FILENAME,
                             ],

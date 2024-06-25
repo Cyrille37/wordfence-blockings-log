@@ -25,14 +25,14 @@ class Plugin
 
     private function __construct()
     {
-        if ((defined('WP_DEBUG') ? constant('WP_DEBUG') : false) && (defined('WF2BL_DEBUG') && constant('WF2BL_DEBUG')))
+        if ( (defined('WP_DEBUG') && constant('WP_DEBUG')) || (defined('WF2BL_DEBUG') && constant('WF2BL_DEBUG')) )
             self::$debug = true;
 
-        //error_log('DEBUG '.(self::$debug?'true':'false'));
+        // @fixme 
         $options = get_option('sample-page');
         //self::debug( $options['title'] );
         //self::debug( __METHOD__, 'options', $options );
-        self::debug( __METHOD__, 'ABSPATH', constant('ABSPATH') );
+        //self::debug( __METHOD__, 'ABSPATH', constant('ABSPATH') );
 
         $this->plugin_dir = plugin_dir_path(__FILE__);
         $this->plugin_dir_url = plugin_dir_url(__FILE__);
