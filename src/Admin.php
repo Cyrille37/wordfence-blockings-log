@@ -33,12 +33,13 @@ class Admin
                 'page_title' => __('Wordfence blockings log', Plugin::TEXTDOMAIN),
                 'sections' => [
                     'section-one' => [
-                        'title' => __('Section One', Plugin::TEXTDOMAIN),
+                        'title' => __('Réglages', Plugin::TEXTDOMAIN),
                         'fields' => [
-                            'datapipe_file' => [
-                                'title' => __('Exchange file', Plugin::TEXTDOMAIN),
-                                'type' => 'text',
-                                'value' => Listener::LOG_FILE,
+                            Plugin::OPTION_LOGFILE_MAXSIZE => [
+                                'title' => __('Max file size (bytes)', Plugin::TEXTDOMAIN),
+                                'type' => 'number',
+                                'value' => Listener::DEFAULT_MAXSIZE,
+                                'attributes' => ['min'=> 1024 * 100],
                             ],
                         ],
                     ],
