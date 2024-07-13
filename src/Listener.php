@@ -13,22 +13,18 @@ namespace WfBL;
  */
 class Listener
 {
-    const LOG_FOLDER = 'wp-content/logs' ;
-    const LOG_FILE = 'wordfence_security_event.log' ;
+    const LOG_FOLDER = 'wp-content/logs';
+    const LOG_EXT = '.log';
+    const LOG_FILE = 'wordfence_security_event' . self::LOG_EXT;
 
-    /**
-     * @return \WfBL\Listener
-     */
-    public static function getInstance()
-    {
-        static $_instance;
-        if ($_instance == null)
-            $_instance = new static();
-        return $_instance;
-    }
+    const DEFAULT_MAXSIZE = 1024 * 1024 * 1;
 
-    private function __construct()
-    {
+    protected $maxSize;
+
+    public function __construct(
+        $maxSize = self::DEFAULT_MAXSIZE
+    ) {
+        $this->maxSize = $maxSize;
         add_action('wordfence_security_event', [$this, 'wordfence_security_event'], 10, 2);
         //add_action('init', [$this, 'wp_init']);
     }
@@ -53,7 +49,7 @@ class Listener
         $duration = $data['duration'] ?? '0';
         $reason = $data['reason'] ?? '?';
 
-        $line = '[' . $date . '] [' . $ip . '] [' . $duration . '] [' . $reason . ']';
+        $line = '[' . $date . '] [' . $ip . '] [' . $duration . '] [' . $what . '] [' . $reason . ']';
 
         file_put_contents(
             $this->getLogFilename(),
@@ -64,6 +60,7 @@ class Listener
 
     protected function getLogFilename()
     {
+        //error_log('ABSPATH: ' . constant('ABSPATH'));
         /*
          mkdir(
             string $directory,
@@ -72,10 +69,22 @@ class Listener
             ?resource $context = null
         ): bool
         */
-        //error_log('ABSPATH: ' . constant('ABSPATH'));
         $dir = constant('ABSPATH') . self::LOG_FOLDER;
         if (!file_exists($dir))
             mkdir($dir, 0777, true);
-        return $dir . '/' . self::LOG_FILE ;
+        $filename = $dir . '/' . self::LOG_FILE;
+
+        $this->rotate($filename);
+
+        return $filename;
+    }
+
+    protected function rotate($filename)
+    {
+        $fstat = stat($filename);
+        if ($fstat['size'] >= $this->maxSize) {
+            $back = str_replace( self::LOG_EXT, date('Ymd_His').self::LOG_EXT, $filename);
+            rename($filename, $back);
+        }
     }
 }

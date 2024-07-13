@@ -28,7 +28,7 @@ class Plugin
         if ( (defined('WP_DEBUG') && constant('WP_DEBUG')) || (defined('WF2BL_DEBUG') && constant('WF2BL_DEBUG')) )
             self::$debug = true;
 
-        // @fixme 
+        // @fixme
         $options = get_option('sample-page');
         //self::debug( $options['title'] );
         //self::debug( __METHOD__, 'options', $options );
@@ -39,7 +39,7 @@ class Plugin
         $this->asset_url = $this->plugin_dir_url . 'assets/';
 
         require_once ( __DIR__.'/Listener.php');
-        Listener::getInstance();
+        new Listener();
 
         if( is_blog_admin() )
         {
