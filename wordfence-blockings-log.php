@@ -1,11 +1,11 @@
 <?php
 /*
  * Wordfence to Crowdsec
- * 
+ *
  * @wordpress-plugin
  * Plugin Name:       Wordfence blockings log
  * Plugin URI:        https://example.com/plugins/the-basics/
- * Description:       Wordfence IP blocking log
+ * Description:       Wordfence IP blocking log. It listening for Wordfence events and log them in a file.
  * Version:           0.0.1
  * Requires at least: 5.2
  * Requires PHP:      7.4
@@ -13,11 +13,11 @@
  * Author URI:        https://framagit.org/Cyrille37
  * License:           MIT
  * License URI:       https://opensource.org/license/MIT
- * Update URI:        
+ * Update URI:
  * Text Domain:       wfbl
  * Domain Path:       /languages
- * Requires Plugins:  
- * 
+ * Requires Plugins:
+ *
  * Thanks & Credits to
  * - https://developer.wordpress.org for Wordpress developer documentation
  * - https://github.com/jeremyHixon/RationalOptionPages for Settings & Options
@@ -32,7 +32,7 @@ $wfBLPlugin = \WfBL\Plugin::getInstance() ;
 /**
  * Activate the plugin.
  */
-function pluginprefix_activate() { 
+function pluginprefix_activate() {
 }
 register_activation_hook( __FILE__, 'pluginprefix_activate' );
 /**

@@ -81,6 +81,8 @@ class Listener
 
     protected function rotate($filename)
     {
+        if( ! file_exists($filename) )
+            return ;
         $fstat = stat($filename);
         if ($fstat['size'] >= $this->maxSize) {
             $back = str_replace( self::LOG_EXT, date('Ymd_His').self::LOG_EXT, $filename);
