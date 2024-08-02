@@ -20,6 +20,23 @@ class Admin
         require_once(__DIR__ . '/../lib/RationalOptionPages.php');
         require_once(__DIR__ . '/LogFile.php');
         $this->options_page();
+
+        add_action( 'admin_notices', [$this, 'wp_admin_notices'] );
+    }
+
+    /**
+     * https://developer.wordpress.org/reference/hooks/admin_notices/
+     */
+    public function wp_admin_notices()
+    {
+        // Check Wordfence is installed and activated
+        if ( ! is_plugin_active( 'wordfence/wordfence.php' ) ) {
+            ?>
+            <div class="notice notice-error is-dismissible">
+            <p><?php _e( 'Wordfence blockings log error: Wordfence plugin must be installed and activated.', Plugin::TEXTDOMAIN ); ?></p>
+            </div>
+            <?php
+        }
     }
 
     /**
