@@ -37,11 +37,22 @@ class Admin
                         'title' => __('Réglages', Plugin::TEXTDOMAIN),
                         'fields' => [
                             [
+                                'id' => LogFile::OPTION_ROTATE,
+                                'title' => __('Rotate mode', Plugin::TEXTDOMAIN),
+                                'type' => 'radio',
+                                'choices' => array(
+                                    LogFile::ROTATE_NONE => __('No rotation', Plugin::TEXTDOMAIN),
+                                    LogFile::ROTATE_DAY => __('Day rotation', Plugin::TEXTDOMAIN),
+                                    LogFile::ROTATE_SIZE => __('Size rotation', Plugin::TEXTDOMAIN),
+                                ),
+                                'value' => LogFile::ROTATE_DEFAULT,
+                            ],
+                            [
                                 'id' => LogFile::OPTION_MAXSIZE,
                                 'title' => __('Max file size (bytes)', Plugin::TEXTDOMAIN),
                                 'type' => 'number',
-                                'value' => LogFile::DEFAULT_MAXSIZE,
-                                'attributes' => ['min'=> 1024 * 100],
+                                'value' => LogFile::MAXSIZE_DEFAULT,
+                                'attributes' => ['min' => LogFile::MAXSIZE_MIN],
                             ],
                         ],
                     ],

@@ -23,7 +23,7 @@ class Listener
 
     public function wp_init()
     {
-        //do_action('wordfence_security_event', 'loginLockout', ['ip', 'reason', 'duration']);
+        do_action('wordfence_security_event', 'loginLockout', ['ip', 'reason', 'duration']);
     }
 
     /**
