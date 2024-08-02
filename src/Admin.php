@@ -18,6 +18,7 @@ class Admin
     private function __construct()
     {
         require_once(__DIR__ . '/../lib/RationalOptionPages.php');
+        require_once(__DIR__ . '/LogFile.php');
         $this->options_page();
     }
 
@@ -35,10 +36,11 @@ class Admin
                     'section-one' => [
                         'title' => __('Réglages', Plugin::TEXTDOMAIN),
                         'fields' => [
-                            Plugin::OPTION_LOGFILE_MAXSIZE => [
+                            [
+                                'id' => LogFile::OPTION_MAXSIZE,
                                 'title' => __('Max file size (bytes)', Plugin::TEXTDOMAIN),
                                 'type' => 'number',
-                                'value' => Listener::DEFAULT_MAXSIZE,
+                                'value' => LogFile::DEFAULT_MAXSIZE,
                                 'attributes' => ['min'=> 1024 * 100],
                             ],
                         ],
