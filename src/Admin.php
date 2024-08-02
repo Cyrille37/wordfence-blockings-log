@@ -52,6 +52,7 @@ class Admin
                 'sections' => [
                     'section-one' => [
                         'title' => __('Réglages', Plugin::TEXTDOMAIN),
+                        //'include'		=> plugin_dir_path( __FILE__ ) . '/your-include.php',
                         'fields' => [
                             [
                                 'id' => LogFile::OPTION_ROTATE,
