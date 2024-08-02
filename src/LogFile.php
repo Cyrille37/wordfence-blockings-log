@@ -28,16 +28,9 @@ class LogFile
         $this->plugin = Plugin::getInstance();
 
         $dir = constant('ABSPATH') . self::LOG_FOLDER;
-        /*
-         mkdir(
-            string $directory,
-            int $permissions = 0777,
-            bool $recursive = false,
-            ?resource $context = null
-        ): bool
-        */
         if (!file_exists($dir))
             mkdir($dir, self::LOG_PERM, true);
+
         $this->filename = $dir . '/' . self::LOG_FILE;
         $this->rotate();
     }
@@ -78,6 +71,10 @@ class LogFile
                     rename($this->filename, $back);
                 }
                 break;
+            case self::ROTATE_NONE:
+            default:
+                // No rotation
+                // You should set an external rotation tool like logrotate.
         }
     }
 }
