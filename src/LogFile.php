@@ -27,12 +27,18 @@ class LogFile
     {
         $this->plugin = Plugin::getInstance();
 
+        $this->filename = $this->getFilename();
+        $this->rotate();
+    }
+
+    public function getFilename()
+    {
         $dir = constant('ABSPATH') . self::LOG_FOLDER;
         if (!file_exists($dir))
             mkdir($dir, self::LOG_PERM, true);
 
-        $this->filename = $dir . '/' . self::LOG_FILE;
-        $this->rotate();
+        $filename = $dir . '/' . self::LOG_FILE;
+        return $filename ;
     }
 
     public function log($line)

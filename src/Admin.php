@@ -51,8 +51,11 @@ class Admin
                 'page_title' => __('Wordfence blockings log', Plugin::TEXTDOMAIN),
                 'sections' => [
                     'section-one' => [
-                        'title' => __('Réglages', Plugin::TEXTDOMAIN),
-                        //'include'		=> plugin_dir_path( __FILE__ ) . '/your-include.php',
+                        'title' => __('Informations', Plugin::TEXTDOMAIN),
+                        'include' => __DIR__ . '/admin-info.php',
+                    ],
+                    'section-two' => [
+                        'title' => __('Settings', Plugin::TEXTDOMAIN),
                         'fields' => [
                             [
                                 'id' => LogFile::OPTION_ROTATE,
