@@ -8,7 +8,7 @@ class LogFile
     const LOG_FOLDER = 'wp-content/logs';
     const LOG_EXT = '.log';
     const LOG_FILE = 'wordfence_security_event' . self::LOG_EXT;
-    const LOG_PERM = 0644 ;
+    const LOG_PERM = 0644;
 
     const OPTION_MAXSIZE = 'logfile_maxsize';
     const MAXSIZE_DEFAULT = 1024 * 1024 * 1;
@@ -46,31 +46,35 @@ class LogFile
 
     protected function rotate()
     {
-        if (!file_exists($this->filename))
-        {
+        if (!file_exists($this->filename)) {
             touch($this->filename);
             chmod($this->filename, self::LOG_PERM);
-            return ;
+            return;
         }
         $fstat = stat($this->filename);
         $mode = $this->plugin->getOption(self::OPTION_ROTATE, self::ROTATE_DEFAULT);
         switch ($mode) {
+
             case self::ROTATE_SIZE:
                 if ($fstat['size'] >= $this->plugin->getOption(self::OPTION_MAXSIZE, self::MAXSIZE_DEFAULT)) {
                     $back = str_replace(self::LOG_EXT, '-' . date('Ymd_His') . self::LOG_EXT, $this->filename);
                     rename($this->filename, $back);
                 }
                 break;
+
             case self::ROTATE_DAY:
                 $now = new \DateTime('now');
                 $now->setTime(0, 0);
                 $mtime = new \DateTime('@' . $fstat['mtime']);
                 $mtime->setTime(0, 0);
+                // Are dates different ?
                 if ($now != $mtime) {
-                    $back = str_replace(self::LOG_EXT, '-' . date('Y-m-d') . self::LOG_EXT, $this->filename);
+                    // use file's date for the rotate filename
+                    $back = str_replace(self::LOG_EXT, '-' . $mtime->format('Y-m-d') . self::LOG_EXT, $this->filename);
                     rename($this->filename, $back);
                 }
                 break;
+
             case self::ROTATE_NONE:
             default:
                 // No rotation
