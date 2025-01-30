@@ -51,8 +51,11 @@ class Admin
                 'page_title' => __('Wordfence blockings log', Plugin::TEXTDOMAIN),
                 'sections' => [
                     'section-one' => [
-                        'title' => __('Réglages', Plugin::TEXTDOMAIN),
-                        //'include'		=> plugin_dir_path( __FILE__ ) . '/your-include.php',
+                        'title' => __('Informations', Plugin::TEXTDOMAIN),
+                        'include' => __DIR__ . '/admin-info.php',
+                    ],
+                    'section-two' => [
+                        'title' => __('Settings', Plugin::TEXTDOMAIN),
                         'fields' => [
                             [
                                 'id' => LogFile::OPTION_ROTATE,
@@ -61,13 +64,13 @@ class Admin
                                 'choices' => array(
                                     LogFile::ROTATE_NONE => __('No rotation', Plugin::TEXTDOMAIN),
                                     LogFile::ROTATE_DAY => __('Day rotation', Plugin::TEXTDOMAIN),
-                                    LogFile::ROTATE_SIZE => __('Size rotation', Plugin::TEXTDOMAIN),
+                                    LogFile::ROTATE_SIZE => __('File size rotation', Plugin::TEXTDOMAIN),
                                 ),
                                 'value' => LogFile::ROTATE_DEFAULT,
                             ],
                             [
                                 'id' => LogFile::OPTION_MAXSIZE,
-                                'title' => __('Max file size (bytes)', Plugin::TEXTDOMAIN),
+                                'title' => __('File size for rotation <br/>(in bytes)', Plugin::TEXTDOMAIN),
                                 'type' => 'number',
                                 'value' => LogFile::MAXSIZE_DEFAULT,
                                 'attributes' => ['min' => LogFile::MAXSIZE_MIN],

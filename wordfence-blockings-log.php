@@ -5,8 +5,13 @@
  * @wordpress-plugin
  * Plugin Name:       Wordfence blockings log
  * Plugin URI:        https://github.com/Cyrille37/wordfence-blockings-log
+<<<<<<< HEAD
  * Description:       Wordfence IP blocking log. It listening for Wordfence events and log them in a file.
  * Version:           1.0.0
+=======
+ * Description:       Wordfence IP blocking log. It listening for Wordfence security events and log them in a file.
+ * Version:           1.0.1
+>>>>>>> 153f6c4272623950365530c012784ffaa1126cbc
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Cyrille37

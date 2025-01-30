@@ -4,7 +4,7 @@ namespace WfBL;
 
 class LogFile
 {
-    const LOG_FOLDER = 'wp-content/logs/wordfence-blockings';
+    const LOG_FOLDER = 'wp-content/logs/wordfence-blockings/';
     const LOG_EXT = '.log';
     const LOG_FILE = 'wordfence_security_event' . self::LOG_EXT;
     const LOG_PERM = 0644;
@@ -26,12 +26,18 @@ class LogFile
     {
         $this->plugin = Plugin::getInstance();
 
+        $this->filename = $this->getFilename();
+        $this->rotate();
+    }
+
+    public function getFilename()
+    {
         $dir = constant('ABSPATH') . self::LOG_FOLDER;
         if (!file_exists($dir))
             mkdir($dir, self::LOG_PERM, true);
 
-        $this->filename = $dir . '/' . self::LOG_FILE;
-        $this->rotate();
+        $filename = $dir . '/' . self::LOG_FILE;
+        return $filename ;
     }
 
     public function log($line)
