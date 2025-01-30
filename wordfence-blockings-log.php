@@ -1,26 +1,26 @@
 <?php
 /*
- * Wordfence to Crowdsec
+ * Store Wordfence security events into a file.
  *
  * @wordpress-plugin
  * Plugin Name:       Wordfence blockings log
- * Plugin URI:        https://example.com/plugins/the-basics/
+ * Plugin URI:        https://github.com/Cyrille37/wordfence-blockings-log
  * Description:       Wordfence IP blocking log. It listening for Wordfence events and log them in a file.
- * Version:           0.0.1
+ * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Cyrille37
  * Author URI:        https://framagit.org/Cyrille37
- * License:           MIT
- * License URI:       https://opensource.org/license/MIT
+ * License:           WTFPL
+ * License URI:       http://www.wtfpl.net/
  * Update URI:
  * Text Domain:       wfbl
  * Domain Path:       /languages
- * Requires Plugins:
+ * Requires Plugins:  Wordfence
  *
  * Thanks & Credits to
  * - https://developer.wordpress.org for Wordpress developer documentation
- * - https://github.com/jeremyHixon/RationalOptionPages for Settings & Options
+ * - https://github.com/jeremyHixon/RationalOptionPages for Settings & Options page
  */
 
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

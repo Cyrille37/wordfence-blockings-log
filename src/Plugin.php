@@ -7,8 +7,6 @@ class Plugin
     const PLUGIN_PREFIX = 'wf2bl';
     const TEXTDOMAIN = self::PLUGIN_PREFIX;
 
-    const OPTION_LOGFILE_MAXSIZE = 'logfile_maxsize' ;
-
     protected $plugin_dir;
     protected $plugin_dir_url;
     protected $asset_url;
@@ -25,6 +23,8 @@ class Plugin
         return $_instance;
     }
 
+    protected $options ;
+
     private function __construct()
     {
         if ( (defined('WP_DEBUG') && constant('WP_DEBUG')) || (defined('WF2BL_DEBUG') && constant('WF2BL_DEBUG')) )
@@ -34,18 +34,23 @@ class Plugin
         $this->plugin_dir_url = plugin_dir_url(__FILE__);
         $this->asset_url = $this->plugin_dir_url . 'assets/';
 
-        // @fixme
-        $options = get_option(Plugin::PLUGIN_PREFIX);
-        //self::debug( __METHOD__, 'options', $options );
-
         require_once ( __DIR__.'/Listener.php');
-        new Listener( $options[Plugin::OPTION_LOGFILE_MAXSIZE] ?? Listener::DEFAULT_MAXSIZE );
+        new Listener();
 
         if( is_blog_admin() )
         {
             require_once ( __DIR__.'/Admin.php');
             Admin::getInstance();
         }
+    }
+
+    public function getOption( $key, $default=null )
+    {
+        if( ! $this->options )
+            $this->options = get_option(Plugin::PLUGIN_PREFIX);
+        if( ! isset($this->options[$key]) )
+            return $default ;
+        return $this->options[$key] ;
     }
 
     public static function debug( ...$items )

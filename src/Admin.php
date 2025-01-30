@@ -18,7 +18,25 @@ class Admin
     private function __construct()
     {
         require_once(__DIR__ . '/../lib/RationalOptionPages.php');
+        require_once(__DIR__ . '/LogFile.php');
         $this->options_page();
+
+        add_action( 'admin_notices', [$this, 'wp_admin_notices'] );
+    }
+
+    /**
+     * https://developer.wordpress.org/reference/hooks/admin_notices/
+     */
+    public function wp_admin_notices()
+    {
+        // Check Wordfence is installed and activated
+        if ( ! is_plugin_active( 'wordfence/wordfence.php' ) ) {
+            ?>
+            <div class="notice notice-error is-dismissible">
+            <p><?php _e( 'Wordfence blockings log error: Wordfence plugin must be installed and activated.', Plugin::TEXTDOMAIN ); ?></p>
+            </div>
+            <?php
+        }
     }
 
     /**
@@ -34,12 +52,25 @@ class Admin
                 'sections' => [
                     'section-one' => [
                         'title' => __('Réglages', Plugin::TEXTDOMAIN),
+                        //'include'		=> plugin_dir_path( __FILE__ ) . '/your-include.php',
                         'fields' => [
-                            Plugin::OPTION_LOGFILE_MAXSIZE => [
+                            [
+                                'id' => LogFile::OPTION_ROTATE,
+                                'title' => __('Rotate mode', Plugin::TEXTDOMAIN),
+                                'type' => 'radio',
+                                'choices' => array(
+                                    LogFile::ROTATE_NONE => __('No rotation', Plugin::TEXTDOMAIN),
+                                    LogFile::ROTATE_DAY => __('Day rotation', Plugin::TEXTDOMAIN),
+                                    LogFile::ROTATE_SIZE => __('Size rotation', Plugin::TEXTDOMAIN),
+                                ),
+                                'value' => LogFile::ROTATE_DEFAULT,
+                            ],
+                            [
+                                'id' => LogFile::OPTION_MAXSIZE,
                                 'title' => __('Max file size (bytes)', Plugin::TEXTDOMAIN),
                                 'type' => 'number',
-                                'value' => Listener::DEFAULT_MAXSIZE,
-                                'attributes' => ['min'=> 1024 * 100],
+                                'value' => LogFile::MAXSIZE_DEFAULT,
+                                'attributes' => ['min' => LogFile::MAXSIZE_MIN],
                             ],
                         ],
                     ],
