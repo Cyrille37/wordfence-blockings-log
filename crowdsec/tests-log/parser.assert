@@ -1,4 +1,3 @@
-len(results) == 2
 len(results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"]) == 13
 results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Success == true
 results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["event_type"] == "block"

@@ -36,3 +36,31 @@ Et dans le parser ;
 On utilise par les parser "s00-raw" il faut donc dire à `grok` d'appliquer le pattern sur `Line.Raw` au lieu de `message`.
 
 📢 L'option `--trace` est essentiel pour le dév !
+
+```
+# cscli -c ../dev.yaml hubtest run wordfence-blockings-log --report-success
+Running test 'wordfence-blockings-log'
+─────────────────────────────────────────────
+ Test                     Result  Assertions 
+─────────────────────────────────────────────
+ wordfence-blockings-log  ✅      145        
+─────────────────────────────────────────────
+
+# cscli -c ../dev.yaml hubtest run wordfence-blockings-log --trace
+...
+len(results) == 2
+len(results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"]) == 13
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["message"] == "Accessed a banned URL"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["source_ip"] == "45.154.138.247"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["status_code"] == "3600"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["timestamp"] == "02/Jan/2026:23:54:55 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Meta["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Meta["source_ip"] == "45.154.138.247"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Success == true
+...
+```
