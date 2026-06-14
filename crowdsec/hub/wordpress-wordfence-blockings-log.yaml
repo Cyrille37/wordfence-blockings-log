@@ -17,27 +17,27 @@
 name: cyrille37/wordpress-wordfence-blockings-log
 description: "Parse wordfence-blockings-log Wordpress plugin log"
 stage: s01-parse
-debug: true
+#debug: true
 #filter: evt.Parsed.program == 'wordfence-blockings-log'
 filter: evt.Line.Labels.type == 'wordpress-wordfence-blockings'
 onsuccess: next_stage
 
+#pattern_syntax:
+# pas besoin, "HTTPDATE" fait le job ;-)
+#  WORDFENCE_DATE: '%{MONTHDAY}/%{MONTH}/%{YEAR}:%{TIME} %{INT}'
+
 nodes:
   - grok:
-      pattern: '^\[%{HTTPDATE:timestamp}\] \[%{IP:source_ip}\] \[%{NUMBER:status_code}\] \[%{WORD:event_type}\] \[%{GREEDYDATA:message}\]$'
+      pattern: '^\[%{HTTPDATE:timestamp}\] \[%{IP:source_ip}\] \[%{NUMBER:duration}\] \[%{WORD:event_type}\] \[%{GREEDYDATA:message}\]$'
       # Important car pas de parser "s00-raw" pour alimenter `message` :
       apply_on: Line.Raw
-    #pattern_syntax:
-    # pas besoin, "HTTPDATE" fait le job ;-)
-    #  WORDFENCE_DATE: '%{MONTHDAY}/%{MONTH}/%{YEAR}:%{TIME} %{INT}'
-    statics:
-      - meta: log_type
-        value: wordfence-blockings-log
-      - meta: program
-        value: wordfence-blockings-log
-      - meta: event_type
-        expression: evt.Parsed.event_type
-      - meta: source_ip
-        expression: evt.Parsed.source_ip
-      - target: evt.StrTime
-        expression: evt.Parsed.timestamp
+
+statics:
+  - meta: log_type
+    value: wordfence-blockings-log
+  - meta: program
+    value: wordfence-blockings-log
+  - meta: source_ip
+    expression: evt.Parsed.source_ip
+  - target: evt.StrTime
+    expression: evt.Parsed.timestamp

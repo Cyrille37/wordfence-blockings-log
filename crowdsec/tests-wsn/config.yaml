@@ -2,7 +2,7 @@ parsers:
     - ./parsers/s01-parse/cyrille37/wordpress-wordfence-blockings-log.yaml
     - crowdsecurity/dateparse-enrich
 scenarios:
-    - ./scenarios/cyrille37/wordpress-wordfence-blockings-scan.yaml
+    - ./scenarios/cyrille37/wordpress-wordfence-blockings-wsn.yaml
 postoverflows:
 log_file: wordfence_security_event.log
 log_type: wordpress-wordfence-blockings

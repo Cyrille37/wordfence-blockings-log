@@ -1,26 +1,23 @@
-# cyrille37/sympa_ww-http-scan
-# Version: 2025-11-09
+# cyrille37/wordpress-wordfence-blockings-scan
+# Version: 2026-06-14
 #
-# @see sympa_ww-http-scan.md
+# @see wordpress-wordfence-blockings-scan.md
 #
-# Docs:
-# - [Creating scenario](https://docs.crowdsec.net/docs/next/log_processor/scenarios/create)
-# - [expression language](https://expr-lang.org/docs/language-definition)
+# Trigger on lines :
+# [block] [Exceeded the maximum global requests per minute for crawlers or humans.]
+# [block] [Exceeded the maximum number of page not found errors per minute for humans.]
+# [block] [Exceeded the maximum number of page not found errors per minute for a crawler.]
 #
 format: 2.0
 name: cyrille37/wordpress-wordfence-blockings-scan
-description: "Detect wordfence-blockings-log Wordpress plugin blockings"
-type: leaky
+description: "Trigger on exceeded the maximum requests per minutes"
+type: trigger
 #debug: true
-filter: "evt.Meta.service == 'wordfence'"
+filter: "evt.Meta.program == 'wordfence-blockings-log' && evt.Parsed.event_type == 'block' && hasPrefix(evt.Parsed.message,'Exceeded the maximum ')"
 groupby: "evt.Meta.source_ip"
-# Here we say that if an IP address is doing more than X matches in less than Y seconds,
-# the scenario will be triggered and will then be silent for Zm for the same IP.
-capacity: 1
-leakspeed: 1m
 blackhole: 15m
 labels:
-  service: wordfence
+  service: wordfence-blockings-log
   spoofable: 0
   confidence: 3
   type: discovery
