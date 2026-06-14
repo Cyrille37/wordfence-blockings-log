@@ -1,0 +1,9 @@
+parsers:
+    # don't need this "s00-raw" because we using a custom format
+    #- crowdsecurity/syslog-logs
+    - ./parsers/s01-parse/cyrille37/wordpress-wordfence-blockings-log.yaml
+scenarios:
+postoverflows:
+log_file: wordfence_security_event.log
+log_type: wordpress-wordfence-blockings
+ignore_parsers: false

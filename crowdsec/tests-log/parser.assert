@@ -1,0 +1,145 @@
+len(results) == 2
+len(results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"]) == 13
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["message"] == "Accessed a banned URL"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["source_ip"] == "45.154.138.247"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["status_code"] == "3600"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Parsed["timestamp"] == "02/Jan/2026:23:54:55 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Meta["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Meta["source_ip"] == "45.154.138.247"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][0].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Parsed["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Parsed["message"] == "Blocked by Wordfence Security Network"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Parsed["source_ip"] == "140.245.106.246"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Parsed["status_code"] == "577"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Parsed["timestamp"] == "07/Jan/2026:04:01:48 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Meta["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Meta["source_ip"] == "140.245.106.246"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][1].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Parsed["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Parsed["message"] == "Blocked by login security setting."
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Parsed["source_ip"] == "104.234.53.147"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Parsed["status_code"] == "1800"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Parsed["timestamp"] == "23/May/2026:12:57:36 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Meta["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Meta["source_ip"] == "104.234.53.147"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][2].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Parsed["event_type"] == "adminLogin"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Parsed["message"] == "?"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Parsed["source_ip"] == "131.229.150.51"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Parsed["status_code"] == "0"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Parsed["timestamp"] == "07/Jan/2026:11:31:46 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Meta["event_type"] == "adminLogin"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Meta["source_ip"] == "131.229.150.51"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][3].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Parsed["event_type"] == "nonAdminLogin"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Parsed["message"] == "?"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Parsed["source_ip"] == "131.229.150.51"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Parsed["status_code"] == "0"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Parsed["timestamp"] == "07/Jan/2026:12:36:11 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Meta["event_type"] == "nonAdminLogin"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Meta["source_ip"] == "131.229.150.51"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][4].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Parsed["event_type"] == "nonAdminLoginNewLocation"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Parsed["message"] == "?"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Parsed["source_ip"] == "131.229.150.51"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Parsed["status_code"] == "0"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Parsed["timestamp"] == "06/Jan/2026:09:05:48 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Meta["event_type"] == "nonAdminLoginNewLocation"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Meta["source_ip"] == "131.229.150.51"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][5].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Parsed["event_type"] == "loginLockout"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Parsed["message"] == "Exceeded the maximum number of login failures which is: 4. The last username they tried to sign in with was: 'cyrille@giquello.fr'"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Parsed["source_ip"] == "2a02:842a:20fe:601:deee:9dde:13c6:c65"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Parsed["status_code"] == "1800"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Parsed["timestamp"] == "14/Jun/2026:09:31:16 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Meta["event_type"] == "loginLockout"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Meta["source_ip"] == "2a02:842a:20fe:601:deee:9dde:13c6:c65"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][6].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Parsed["event_type"] == "throttle"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Parsed["message"] == "Exceeded the maximum global requests per minute for crawlers or humans."
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Parsed["source_ip"] == "192.109.200.101"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Parsed["status_code"] == "60"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Parsed["timestamp"] == "23/May/2026:12:48:58 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Meta["event_type"] == "throttle"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Meta["source_ip"] == "192.109.200.101"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][7].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Parsed["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Parsed["message"] == "Exceeded the maximum global requests per minute for crawlers or humans."
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Parsed["source_ip"] == "192.109.200.101"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Parsed["status_code"] == "60"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Parsed["timestamp"] == "23/May/2026:12:48:58 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Meta["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Meta["source_ip"] == "192.109.200.101"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][8].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Parsed["event_type"] == "throttle"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Parsed["message"] == "Exceeded the maximum number of page not found errors per minute for humans."
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Parsed["source_ip"] == "101.47.29.104"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Parsed["status_code"] == "60"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Parsed["timestamp"] == "04/Jun/2026:14:38:58 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Meta["event_type"] == "throttle"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Meta["source_ip"] == "101.47.29.104"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][9].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Parsed["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Parsed["message"] == "Exceeded the maximum number of page not found errors per minute for humans."
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Parsed["source_ip"] == "101.47.29.104"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Parsed["status_code"] == "59"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Parsed["timestamp"] == "04/Jun/2026:17:53:45 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Meta["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Meta["source_ip"] == "101.47.29.104"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][10].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Parsed["event_type"] == "throttle"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Parsed["message"] == "Exceeded the maximum number of page not found errors per minute for a crawler."
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Parsed["source_ip"] == "34.129.170.241"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Parsed["status_code"] == "60"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Parsed["timestamp"] == "09/Jun/2026:23:52:45 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Meta["event_type"] == "throttle"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Meta["source_ip"] == "34.129.170.241"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][11].Evt.Whitelisted == false
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Success == true
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Parsed["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Parsed["message"] == "Exceeded the maximum number of page not found errors per minute for a crawler."
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Parsed["source_ip"] == "34.129.170.241"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Parsed["status_code"] == "59"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Parsed["timestamp"] == "09/Jun/2026:23:52:46 +0000"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Meta["event_type"] == "block"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Meta["log_type"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Meta["program"] == "wordfence-blockings-log"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Meta["source_ip"] == "34.129.170.241"
+results["s01-parse"]["cyrille37/wordpress-wordfence-blockings-log"][12].Evt.Whitelisted == false

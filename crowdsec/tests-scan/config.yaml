@@ -1,0 +1,7 @@
+parsers:
+    - ./parsers/s01-parse/cyrille37/cyrille37-wordpress-wordfence-blockings-log.yaml
+scenarios:
+postoverflows:
+log_file: myservice-logs.log
+log_type: syslog
+ignore_parsers: false

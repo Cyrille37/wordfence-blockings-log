@@ -1,0 +1,43 @@
+# cyrille37/wordpress-wordfence-blockings-log
+# Version: 2026-06-14
+#
+# @see wordpress-wordfence-blockings-log.md
+#
+# Docs:
+# - [Parser creation : skeleton](https://docs.crowdsec.net/docs/next/log_processor/parsers/create/#parser-creation--skeleton)
+# - [expression language](https://expr-lang.org/docs/language-definition)
+# 
+# [Patterns prédéfinies](https://github.com/crowdsecurity/grokky/blob/master/base.go) :
+# - HTTPDATEDD/Mon/YYYY:HH:MM:SS +NNNN (Combined Log Format)
+#
+# lines examples:
+# [07/Jan/2026:11:31:46 +0000] [131.229.150.51] [0] [adminLogin] [?]
+# [09/Jun/2026:23:52:46 +0000] [34.129.170.241] [59] [block] [Exceeded the maximum number of page not found errors per minute for a crawler.]
+#
+name: cyrille37/wordpress-wordfence-blockings-log
+description: "Parse wordfence-blockings-log Wordpress plugin log"
+stage: s01-parse
+debug: true
+#filter: evt.Parsed.program == 'wordfence-blockings-log'
+filter: evt.Line.Labels.type == 'wordpress-wordfence-blockings'
+onsuccess: next_stage
+
+nodes:
+  - grok:
+      pattern: '^\[%{HTTPDATE:timestamp}\] \[%{IP:source_ip}\] \[%{NUMBER:status_code}\] \[%{WORD:event_type}\] \[%{GREEDYDATA:message}\]$'
+      # Important car pas de parser "s00-raw" pour alimenter `message` :
+      apply_on: Line.Raw
+    #pattern_syntax:
+    # pas besoin, "HTTPDATE" fait le job ;-)
+    #  WORDFENCE_DATE: '%{MONTHDAY}/%{MONTH}/%{YEAR}:%{TIME} %{INT}'
+    statics:
+      - meta: log_type
+        value: wordfence-blockings-log
+      - meta: program
+        value: wordfence-blockings-log
+      - meta: event_type
+        expression: evt.Parsed.event_type
+      - meta: source_ip
+        expression: evt.Parsed.source_ip
+      - target: evt.StrTime
+        expression: evt.Parsed.timestamp
