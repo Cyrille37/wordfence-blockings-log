@@ -3,6 +3,8 @@
 #
 # @see wordpress-wordfence-blockings-scan.md
 #
+# Doc: https://docs.crowdsec.net/docs/log_processor/scenarios/format/
+#
 # Trigger on lines :
 # [block] [Exceeded the maximum global requests per minute for crawlers or humans.]
 # [block] [Exceeded the maximum number of page not found errors per minute for humans.]
@@ -17,11 +19,9 @@ filter: "evt.Meta.program == 'wordfence-blockings-log' && evt.Parsed.event_type 
 groupby: "evt.Meta.source_ip"
 blackhole: 15m
 labels:
-  service: wordfence-blockings-log
+  service: http
   spoofable: 0
   confidence: 3
-  type: discovery
-  label: "Http Scan"
-  behaviors: ['http:scan']
+  label: 'Wordfence Http Scan'
+  behavior: 'http:crawl'
   remediation: true
-

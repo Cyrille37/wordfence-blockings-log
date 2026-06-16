@@ -3,6 +3,8 @@
 #
 # @see wordpress-wordfence-blockings-wsn.md
 #
+# Doc: https://docs.crowdsec.net/docs/log_processor/scenarios/format/
+#
 # Trigger on lines :
 # [block] [Blocked by Wordfence Security Network]
 #
@@ -10,15 +12,14 @@ format: 2.0
 name: cyrille37/wordpress-wordfence-blockings-wsn
 description: "Propagate Blocked by Wordfence Security Network to Crowdsec"
 type: trigger
-debug: true
+debug: false
 filter: "evt.Meta.program == 'wordfence-blockings-log' && evt.Parsed.event_type == 'block' && evt.Parsed.message == 'Blocked by Wordfence Security Network'"
 groupby: "evt.Meta.source_ip"
 blackhole: 60m
 labels:
-  service: wordfence-blockings-log
-  spoofable: 0
-  confidence: 3
-  type: discovery
-  label: "Http Scan"
-  behaviors: ['http:scan']
+  service: http
+  spoofable: 1
+  confidence: 2
+  label: 'Wordfence Security Network'
+  behavior: 'http:scan'
   remediation: true
